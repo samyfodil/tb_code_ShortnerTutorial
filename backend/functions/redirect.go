@@ -1,6 +1,8 @@
 package lib
 
 import (
+	"strings"
+
 	"github.com/taubyte/go-sdk/database"
 	"github.com/taubyte/go-sdk/event"
 )
@@ -24,7 +26,7 @@ func redirect(e event.Event) uint32 {
 	}
 	defer db.Close()
 
-	url, err := db.Get(short)
+	url, err := db.Get(strings.ToLower(short))
 	if err != nil {
 		return 1
 	}
